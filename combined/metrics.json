@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-24 19:59",
+ "generated_at": "2026-10-24 20:19",
  "assert_cross": true,
  "partA": [
   {
@@ -297,5 +297,144 @@
    "diff_s": 2.0,
    "pct": 0.36
   }
+ },
+ "partC": {
+  "groups": [
+   {
+    "name": "原版",
+    "file_label": "prompt.txt.bak（旧版全文）",
+    "batch": 53,
+    "run_id": "r_0f4ecce5d3d6724d",
+    "probe": {
+     "sampler_id": "397",
+     "scheduler_id": "261",
+     "seed": 900198731025885,
+     "steps": 10,
+     "transition_step": 6,
+     "scheduler": "beta",
+     "denoise": 1,
+     "lowres_scale": 0.6000000000000001,
+     "has_refiner": false,
+     "refiner": null,
+     "split": "6+4"
+    },
+    "prompt_len": 6124,
+    "prompt_md5": "f1ed33797ba14e9118690a2c4f44dd77",
+    "snow": [
+     "<Subject 1> is the snowy night street scene from <Picture 1>: a traditional Chinese baozi shop with glowing amber lanterns and stacked bamboo steamers on the right, a wooden porridge cart with a small canopy and steaming pot on the left, cobblestones dusted with snow, heavy falling snowflakes, and a distant paifang archway receding into the dark.",
+     "A 15-second vertical realistic short-drama sequence set at the snowy night porridge cart of <Subject 1>.",
+     "The final cut returns to the two-shot: <Subject 3> sighs and turns his gaze into the deep snowy street while <Subject 2> continues stacking bowls under the stubborn amber glow of the cart lantern.",
+     "<Subject 1> (appears in [Shot 1, Shot 2, Shot 3]): fully_preserved - the baozi shop, porridge cart, lanterns, steamers, snowfall, and paifang archway remain as the continuous environment throughout all three shots.",
+     "The scene is <Subject 1> at night: heavy snow falls, amber lanterns on the baozi shop glow warm against the blue-dark sky, steam rises from the porridge pot on the wooden cart.",
+     "The only sounds are the howling wind and the light clink of ceramic bowls and chopsticks.",
+     "Snowflakes drift past her temples and the loose strands of her hair.",
+     "Faint steam from the porridge pot curls behind her shoulder; wind-driven snow whispers across the frame.",
+     "He exhales a long, slow sigh, then turns his head away from <Subject 2>, directing his gaze toward frame-left into the deep snowy street where the distant paifang archway fades under falling flakes.",
+     "The amber lantern glow of the cart holds stubbornly against the swirling snow.",
+     "The only sounds are wind sweeping snow and the dull thud of stacked bowls on wood.",
+     "A continuous bed of howling winter wind and fine snow patter fills all three shots.",
+     "Shot 2 adds a faint hiss of residual steam from the porridge pot and the soft whisper of wind across the close frame.",
+     "Shot 3 returns to the broader wind with a single dull wooden thud as <Subject 2> stacks the last bowl."
+    ],
+    "server": 464.5,
+    "wall": 471.9,
+    "queue": 3.4,
+    "seed_pinned": 0,
+    "high_freq": 2.641,
+    "pct_server": 0.0,
+    "grid": "img/xuehua_d6724d_grid.jpg",
+    "video": "media/xuehua_d6724d.mp4"
+   },
+   {
+    "name": "新 qwen",
+    "file_label": "prompt.txt",
+    "batch": 58,
+    "run_id": "r_8c9df84ea4ba9b90",
+    "probe": {
+     "sampler_id": "397",
+     "scheduler_id": "261",
+     "seed": 900198731025885,
+     "steps": 10,
+     "transition_step": 6,
+     "scheduler": "beta",
+     "denoise": 1,
+     "lowres_scale": 0.6000000000000001,
+     "has_refiner": false,
+     "refiner": null,
+     "split": "6+4"
+    },
+    "prompt_len": 3997,
+    "prompt_md5": "245e41342838ee8c682279af3b6f0225",
+    "snow": [
+     "<Subject 1> is the scene 十五年前高档酒楼门外的包子铺与街边粥摊 from <Picture 1>: a wooden porridge cart with steaming pots and a lantern at screen left, snow-covered cobblestones, and a warm-lit restaurant frontage with stacked steamer baskets at screen right.",
+     "[reference generation] In a snowy night outside the restaurant and porridge stall, <Subject 2> and <Subject 3> remain beside the cart at screen left.",
+     "The final double medium shows <Subject 3> sighing and looking into the snow while <Subject 2> finishes stacking bowls under the stubborn stall light.",
+     "Night snowstorm in <Subject 1>.",
+     "<Subject 2> and <Subject 3> stand beside the porridge cart at screen left, their established left-right relationship intact; the distant brother and sister remain hidden in the snow and do not enter frame.",
+     "Snow brushes loose strands at her temples.",
+     "<Subject 3> grips the ladle and silently watches <Subject 2> working beside him, his furrowed brow heavy with concern; he exhales, slowly turns his head, and looks into the snowy street at screen left.",
+     "The warm stall light glows stubbornly through the blizzard.",
+     "The bed is cold wind and falling snow, with clear determined Mandarin dialogue from <Subject 2>, light ceramic clinks as bowls and chopsticks are handled, a faint hiss of steam, and a dull thud of stacked bowls; no non-diegetic music."
+    ],
+    "server": 445.3,
+    "wall": 451.3,
+    "queue": 3.0,
+    "seed_pinned": 0,
+    "high_freq": 2.9209,
+    "pct_server": -4.1,
+    "grid": "img/xuehua_ba9b90_grid.jpg",
+    "video": "media/xuehua_ba9b90.mp4"
+   },
+   {
+    "name": "新 deepseek",
+    "file_label": "prompt_ds.txt",
+    "batch": 58,
+    "run_id": "r_fcc16a05cc00f0c7",
+    "probe": {
+     "sampler_id": "397",
+     "scheduler_id": "261",
+     "seed": 900198731025885,
+     "steps": 10,
+     "transition_step": 6,
+     "scheduler": "beta",
+     "denoise": 1,
+     "lowres_scale": 0.6000000000000001,
+     "has_refiner": false,
+     "refiner": null,
+     "split": "6+4"
+    },
+    "prompt_len": 5590,
+    "prompt_md5": "8a4fa10bd3515ffd170fd10feb11d346",
+    "snow": [
+     "<Subject 1> is the snowy night street outside the high-end restaurant from <Picture 1>: at the left of frame the street-side porridge cart with its wooden canopy, hanging lantern, steaming pot and countertop, a snow-covered street receding into the distance, and at the right of frame the warm-lit restaurant façade with lattice doors, hanging lanterns and stacked bamboo steamers.",
+     "[reference generation] Night, heavy wind-driven snow outside the high-end restaurant, where the street-side porridge cart glows under its lantern at the left of frame.",
+     "A cut to a medium-close shot with a slow push-in shows her wiping a porcelain bowl as her face hardens from sorrow into plain resolve while she repeats her reassurance; then a cut back to the two-person medium shot, where 陈大爷 grips the ladle in silence, sighs, and slowly turns his head toward the snowy street deep at the left of frame while she keeps stacking bowls and the amber stall light burns on.",
+     "<Subject 1> (appears in [Shot 1, Shot 2, Shot 3]): fully_preserved - the night street, the falling snow, the porridge cart at the left of frame with its canopy, lantern and steaming pot, and the warm-lit restaurant façade with lanterns and steamers at the right stay as pictured; the storm is the source's own condition.",
+     "[Shot 1] Photoreal live-action short-drama footage, natural skin and fabric texture, real reflections and refractions in the trodden snow, high-end film grain; fixed two-person medium shot at night in heavy wind-driven snow outside the high-end restaurant.",
+     "The porridge cart of <Subject 1> holds the left of frame with its wooden canopy, glowing lantern, steaming pot and countertop bowls; the snow-covered street recedes beyond it and the warm-lit restaurant façade glows at the right of frame.",
+     "No other figure appears anywhere on the street - the distant brother and sister are lost in the storm and stay out of frame; no subtitles, watermarks or logos appear, and the line is spoken exactly and completely as written.",
+     "[Shot 2] At 00:06.000, cut to a medium-close shot of <Subject 2> with a slow, small push-in: wind-driven snow sweeps past the loose strands at her temples as she wipes a porcelain bowl with both hands, quick and capable, her face hardening from the first sting of sorrow into plain, stubborn resolve.",
+     "[Shot 3] At 00:11.500, cut back to the two-person medium shot, camera fixed: <Subject 3> grips the ladle tightly and watches her in silence, his wrinkled forehead knotted, as <Subject 2> keeps stacking the bowls briskly behind the cart and the amber stall light burns stubbornly through the storm.",
+     "<Subject 3> lets out a long sigh, then slowly turns his head and looks deep into the snowy street at the left of frame, his face settling into grave, tacit assent, while <Subject 2> finishes stacking the bowls on the wooden board, her eyes calm and resilient.",
+     "Howling wind drives the snow across the street over a thin hiss of steam from the porridge pot, with the faint clink of coarse ceramic bowls and chopsticks being cleared and the dull thud of bowls laid down on wood; 陈大爷's long exhaled sigh sits low beneath the wind."
+    ],
+    "server": 447.5,
+    "wall": 454.1,
+    "queue": 2.9,
+    "seed_pinned": 0,
+    "high_freq": 2.6004,
+    "pct_server": -3.7,
+    "grid": "img/xuehua_00f0c7_grid.jpg",
+    "video": "media/xuehua_00f0c7.mp4"
+   }
+  ],
+  "tri": [
+   "img/tri_t2.jpg",
+   "img/tri_t4.jpg",
+   "img/tri_t6.jpg",
+   "img/tri_t8.jpg"
+  ],
+  "controlled": "同素材/同卡/同配置(默认6+4)/同seed(900198731025885 未下发·回退模板)",
+  "topic": "风雪描述在三版 prompt 的差异及对画面的影响"
  }
 }

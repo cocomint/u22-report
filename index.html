@@ -23,20 +23,13 @@ code{background:#1e2430;padding:1px 5px;border-radius:3px;font-size:12px}
 <div class="sub">同一张卡 u22（API-U22-9图3音 及其精修版）上的参数测评与画质对照，全部静态托管、可离线打开。</div>
 
 <a class="card" href="combined/">
-  <h2>合并对照 · 精修加成 × 二采 6 步</h2>
-  <p>一页两问：Part A 精修卡是否有加成（雪花 + 浇花两素材，PSNR / 高频能量 / NFE / 耗时），
-  Part B 二采 6 步对比效果（雪花四路 steps 10→12）。全部复用既有产物、零重抽帧，
-  并在构建时硬验交叉断言：refiner 雪花两路 = snow-4way #53/#54 同一批 run。</p>
-  <span class="tag">Part A refiner-ab × Part B snow-4way</span>
-</a>
-
-<a class="card" href="prompt3/">
-  <h2>雪花 · 三路 prompt 对照（风雪描述）</h2>
-  <p>同素材同卡同配置同 seed，唯一变量 = prompt 全文：#53 原版（旧版 6124 字）/
-  #58 新 qwen（3997 字）/ #58 新 deepseek（5590 字）。含风雪描述逐句三列对照、
-  同刻 1x3 并排、三路全程拼图与视频同步。结论：决定风雪画面强度的是力度/方向/材质词
-  （wind-driven / sweep / trodden），不是提及次数——原版句数最多反而画面最弱。</p>
-  <span class="tag">batch #53 / #58 · prompt md5 逐一核对 executed_prompt</span>
+  <h2>综合对照 · 精修加成 × 二采 6 步 × 三路 prompt</h2>
+  <p>一页三问：Part A 精修卡是否有加成（雪花 + 浇花，PSNR / 高频能量 / NFE / 耗时），
+  Part B 二采 6 步对比效果（雪花四路 steps 10→12），Part C 三路 prompt 的风雪描述差异
+  （#53 原版 / #58 新 qwen / #58 新 deepseek，同 seed 同配置唯一变量 prompt，
+  含风雪句逐句三列对照与同刻 1x3 并排）。全部复用既有产物、零重抽帧，构建时硬验
+  交叉断言：refiner 雪花两路 = #53/#54 同 run、prompt3 原版 = #53 同 run。</p>
+  <span class="tag">Part A refiner-ab × Part B snow-4way × Part C prompt3</span>
 </a>
 
 <a class="card" href="snow-4way/">
