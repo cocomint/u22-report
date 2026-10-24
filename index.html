@@ -1,0 +1,51 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>u22 报告索引</title>
+<style>
+:root{--bg:#0f1115;--fg:#e6e8ec;--mut:#9aa3b2;--acc:#63b3ff;--line:#232833;--card:#171b22}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:14px/1.65 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+main{max-width:860px;margin:0 auto;padding:44px 22px 60px}
+h1{margin:0 0 6px;font-size:23px}
+.sub{color:var(--mut);font-size:13px;margin-bottom:30px}
+a.card{display:block;background:var(--card);border:1px solid var(--line);
+border-radius:7px;padding:17px 19px;margin-bottom:13px;text-decoration:none;color:var(--fg)}
+a.card:hover{border-color:var(--acc)}
+a.card h2{margin:0 0 5px;font-size:16px;color:var(--acc);font-weight:600}
+a.card p{margin:0;color:var(--mut);font-size:12.5px}
+a.card .tag{display:inline-block;margin-top:9px;font-size:11.5px;color:var(--mut);
+border:1px solid var(--line);border-radius:11px;padding:2px 9px}
+footer{color:var(--mut);font-size:12px;margin-top:28px;border-top:1px solid var(--line);padding-top:14px}
+code{background:#1e2430;padding:1px 5px;border-radius:3px;font-size:12px}
+</style></head><body><main>
+<h1>u22 视频生成 · 报告索引</h1>
+<div class="sub">同一张卡 u22（API-U22-9图3音 及其精修版）上的参数测评与画质对照，全部静态托管、可离线打开。</div>
+
+<a class="card" href="snow-4way/">
+  <h2>雪花 · 四路对照（截帧 + 耗时）</h2>
+  <p>同素材同卡的四种配置横向比：默认 6+4 / 精修卡 6+4+1 / 6+6 / 6+6 随机 seed。
+  含 2x2 同刻四格切帧、四路全程 12 帧拼图、四路视频同步播放，以及 seed 无关性检查
+  （#56 vs #57 只差 seed，耗时差 0.36% → steps=12 的开销与 seed 无关）。</p>
+  <span class="tag">batch #53 / #54 / #56 / #57</span>
+</a>
+
+<a class="card" href="refiner-ab/">
+  <h2>精修卡 A/B 对照（左右并排）</h2>
+  <p>u22 默认卡 vs u22-refiner 精修卡的两两对照：左右视频同步、同刻并排帧、
+  PSNR 差异量化、耗时增幅，以及人工打标（A/B/same，存 localStorage 可导出 JSON）。</p>
+  <span class="tag">素材：雪花 · 胶花</span>
+</a>
+
+<a class="card" href="3d319c70684f86006aeea298/">
+  <h2>工作流参数测评报告 v2</h2>
+  <p>u22 工作流节点级参数测评（含成片对比），是上面两份对照报告的基础版本。</p>
+  <span class="tag">v2</span>
+</a>
+
+<footer>
+  数据来源：foundry1 平台 <code>var/out/media/</code> 产物 + <code>var/db/u06v5.db</code> 计时。
+  steps / transition_step / seed 的真源一律取 <code>run.executed_prompt</code>
+  （DB <code>runs.seed</code> 对未显式下发 seed 的批次为 NULL）。
+</footer>
+</main></body></html>

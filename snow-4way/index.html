@@ -1,0 +1,172 @@
+<!doctype html><html lang='zh'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>u22 雪花 四路对照（截帧 + 耗时）</title>
+<style>:root{--bg:#0f1115;--fg:#e6e8ec;--mut:#9aa3b2;--acc:#63b3ff;--line:#232833;
+--ok:#4ade80;--up:#fb923c;--card:#171b22}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:14px/1.65 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+header{padding:26px 22px 14px;border-bottom:1px solid var(--line)}
+h1{margin:0 0 6px;font-size:21px}
+h2{font-size:17px;margin:0 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+h3{font-size:14px;margin:0 0 9px;color:var(--mut);font-weight:600}
+.sub{color:var(--mut);font-size:12.5px}
+nav{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+nav a{color:var(--acc);text-decoration:none;font-size:12.5px;padding:4px 10px;
+border:1px solid var(--line);border-radius:14px}
+nav a:hover{border-color:var(--acc)}
+main{padding:20px 22px 46px;max-width:1500px}
+section{margin-bottom:34px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600;background:var(--card);white-space:nowrap}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.hi td{background:rgba(99,179,255,.07)}
+code{background:#1e2430;padding:1px 5px;border-radius:3px;font-size:12px}
+.note{color:var(--mut);font-size:12px;margin:9px 0 0}
+td .note{margin:2px 0 0}
+.up{color:var(--up);font-weight:600}
+.down{color:var(--ok);font-weight:600}
+.shot{width:100%;border:1px solid var(--line);border-radius:5px;display:block}
+.qbar{display:flex;gap:7px;align-items:center;margin-top:9px;flex-wrap:wrap}
+.btn{background:#1e2430;color:var(--fg);border:1px solid var(--line);
+padding:5px 13px;border-radius:14px;cursor:pointer;font-size:12.5px}
+.btn:hover{border-color:var(--acc)}
+.btn.on{color:var(--acc);border-color:var(--acc)}
+.cur{color:var(--mut);font-size:12px;margin-left:5px}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:11px;font-size:12.5px}
+.legend div{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:7px 10px}
+.legend b{color:var(--acc)}
+.grids{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+figure{margin:0}
+figcaption{font-size:12px;color:var(--mut);margin-top:6px;text-align:center}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+video{width:100%;border:1px solid var(--line);border-radius:5px;display:block;background:#000}
+.callout{background:var(--card);border-left:3px solid var(--acc);
+padding:12px 15px;border-radius:0 5px 5px 0;margin-top:16px}
+.callout ul{margin:7px 0 0;padding-left:19px}
+.callout li{margin-bottom:5px}
+@media(max-width:900px){.grids,.vgrid,.legend{grid-template-columns:1fr}}
+</style></head><body>
+<header><h1>u22 · 雪花 · 四路对照 <span class='note'>同素材 · 同卡 · 四种配置</span></h1>
+<div class='sub'>素材「雪花」 · 1664x928 / 24fps / 10.13s · 四路齐备 4/4 · 生成于 2026-10-24 18:47:54</div><nav>
+<a href='#cfg'>四路配置</a><a href='#timing'>耗时对比</a>
+<a href='#quad'>同刻四格截帧</a><a href='#grids'>全程拼图</a>
+<a href='#videos'>视频四路同步</a><a href='#concl'>看片结论</a>
+</nav></header><main>
+<section id='cfg'><h2>四路配置 <span class='note'>真源 = executed_prompt</span></h2>
+<table><thead><tr><th>批次</th><th>配置</th><th>工作流</th><th class='num'>steps</th><th class='num'>transition</th><th class='num'>低清+高清</th><th>419 精修</th><th class='num'>seed（实际生效）</th></tr></thead><tbody>
+<tr><td>#53</td><td><b>默认 6+4</b><div class='note'>steps=10 · transition_step=6（模板默认）</div></td><td><code>u22</code></td><td class='num'>10</td><td class='num'>6</td><td class='num'><b>6+4</b></td><td>无</td><td class='num'>900198731025885<div class='note'>未下发·回退模板固定值</div></td></tr>
+<tr><td>#54</td><td><b>精修卡 6+4+1</b><div class='note'>u22-refiner · 419 在 sigma 尾部加 1 步</div></td><td><code>u22-refiner</code></td><td class='num'>10</td><td class='num'>6</td><td class='num'><b>6+5</b></td><td>有</td><td class='num'>900198731025885<div class='note'>未下发·回退模板固定值</div></td></tr>
+<tr class='hi'><td>#56</td><td><b>6+6</b><div class='note'>steps=12 · transition_step=6（高清段 4→6 步）</div></td><td><code>u22</code></td><td class='num'>12</td><td class='num'>6</td><td class='num'><b>6+6</b></td><td>无</td><td class='num'>900198731025885<div class='note'>未下发·回退模板固定值</div></td></tr>
+<tr class='hi'><td>#57</td><td><b>6+6 随机seed</b><div class='note'>同 #56 配置 · 只换 seed（隔离 seed 变量）</div></td><td><code>u22</code></td><td class='num'>12</td><td class='num'>6</td><td class='num'><b>6+6</b></td><td>无</td><td class='num'>1591131034<div class='note'>显式下发 pinned=1</div></td></tr>
+</tbody></table>
+<p class='note'>steps / transition_step / seed 均取自 <code>run.executed_prompt</code> —— DB <code>runs.seed</code> 对未显式下发 seed 的批次（#53/#54/#56）是 NULL，只有 executed_prompt 里采样器的 seed 才是实际生效值。「低清+高清」= transition_step + (steps − transition_step + 419 加的 extra_steps)。</p>
+</section>
+<section id='timing'><h2>耗时对比 <span class='note'>以 #53 默认为基准</span></h2>
+<table><thead><tr><th>批次</th><th>配置</th><th class='num'>排队</th><th class='num'>采样 server</th><th class='num'>vs 默认</th><th class='num'>端到端 wall</th><th class='num'>vs 默认</th></tr></thead><tbody>
+<tr><td>#53</td><td>默认 6+4</td><td class='num'>3.4s</td><td class='num'><b>464.5s</b></td><td class='num'><span class='note'>±0.0%</span></td><td class='num'>471.9s</td><td class='num'><span class='note'>±0.0%</span></td></tr>
+<tr><td>#54</td><td>精修卡 6+4+1</td><td class='num'>3.0s</td><td class='num'><b>517.3s</b></td><td class='num'><span class='up'>+11.4%</span></td><td class='num'>524.5s</td><td class='num'><span class='up'>+11.1%</span></td></tr>
+<tr class='hi'><td>#56</td><td>6+6</td><td class='num'>3.1s</td><td class='num'><b>559.4s</b></td><td class='num'><span class='up'>+20.4%</span></td><td class='num'>567.2s</td><td class='num'><span class='up'>+20.2%</span></td></tr>
+<tr class='hi'><td>#57</td><td>6+6 随机seed</td><td class='num'>3.2s</td><td class='num'><b>561.4s</b></td><td class='num'><span class='up'>+20.9%</span></td><td class='num'>568.5s</td><td class='num'><span class='up'>+20.5%</span></td></tr>
+</tbody></table>
+<p class='note'>采样 = <code>server_seconds</code>（pod 纯采样）；端到端 = <code>wall_seconds</code>（含排队 + 产物下载）。排队 = <code>queue_seconds</code>，只在 DB 有、/api/runs 不返回。</p>
+<div class='callout'><h3>seed 无关性检查（#56 vs #57）</h3><ul>
+<li>两路配置完全相同（steps=12 / transition=6），只差 seed：<code>900198731025885</code> vs <code>1591131034</code>。</li><li>采样耗时 559.4s vs 561.4s，差 2.0s（<span class='up'>+0.4%</span>）。</li>
+<li>差异在 1% 以内 → <b>steps=12 的开销与 seed 无关</b>，#57 作为纯画质对照是干净的，没混进额外变量。</li>
+</ul></div>
+</section>
+<section id='quad'><h2>同刻四格截帧 <span class='note'>2x2 · 点时刻切换</span></h2>
+<div class='quadwrap'>
+<img class='shot' src='img/quad_t2.jpg' data-base='img/quad_t' loading='lazy'>
+<div class='qbar'>
+<button class='btn' data-t='2'>t=2s</button>
+<button class='btn' data-t='4'>t=4s</button>
+<button class='btn' data-t='6'>t=6s</button>
+<button class='btn' data-t='8'>t=8s</button>
+<span class='cur'>t=2s</span>
+<button class='btn' data-quadplay>四路同时播放</button>
+<button class='btn' data-quadpause>四路同时暂停</button>
+</div><div class='legend'>
+<div><b>左上</b> · #53 默认 6+4 <span class='note'>6+4 · run r_0f4ecce5d3d6724d</span></div>
+<div><b>右上</b> · #54 精修卡 6+4+1 <span class='note'>6+5 · run r_5d1a5515f04a989d</span></div>
+<div><b>左下</b> · #56 6+6 <span class='note'>6+6 · run r_a36cb38c5dfb827b</span></div>
+<div><b>右下</b> · #57 6+6 随机seed <span class='note'>6+6 · run r_c24c5844226b0bcd</span></div>
+</div></div>
+<p class='note'>看颗粒/噪点请盯<b>静态边缘与脸部</b>；蒸汽、落雪、水雾这类动态元素各路形状本来就不同（采样轨迹分叉），不是配置差异。</p>
+</section>
+<section id='grids'><h2>全程 12 帧拼图 <span class='note'>1fps · 4x3</span></h2>
+<div class='grids'>
+<figure><img class='shot' src='img/xuehua_base_grid.jpg' loading='lazy'><figcaption><b>#53 默认 6+4</b> · 6+4</figcaption></figure>
+<figure><img class='shot' src='img/xuehua_refiner_grid.jpg' loading='lazy'><figcaption><b>#54 精修卡 6+4+1</b> · 6+5</figcaption></figure>
+<figure><img class='shot' src='img/xuehua_s66_grid.jpg' loading='lazy'><figcaption><b>#56 6+6</b> · 6+6</figcaption></figure>
+<figure><img class='shot' src='img/xuehua_s66rand_grid.jpg' loading='lazy'><figcaption><b>#57 6+6 随机seed</b> · 6+6</figcaption></figure>
+</div></section>
+<section id='videos'><h2>视频四路同步 <span class='note'>源片 h264+aac，未转码</span></h2>
+<div class='vgrid' data-quad='1'>
+<figure><video controls preload='metadata' src='media/xuehua_base.mp4'></video><figcaption><b>#53 默认 6+4</b> · <code>u22</code> · run r_0f4ecce5d3d6724d</figcaption></figure>
+<figure><video controls preload='metadata' src='media/xuehua_refiner.mp4'></video><figcaption><b>#54 精修卡 6+4+1</b> · <code>u22-refiner</code> · run r_5d1a5515f04a989d</figcaption></figure>
+<figure><video controls preload='metadata' src='media/xuehua_s66.mp4'></video><figcaption><b>#56 6+6</b> · <code>u22</code> · run r_a36cb38c5dfb827b</figcaption></figure>
+<figure><video controls preload='metadata' src='media/xuehua_s66rand.mp4'></video><figcaption><b>#57 6+6 随机seed</b> · <code>u22</code> · run r_c24c5844226b0bcd</figcaption></figure>
+</div>
+<p class='note'>播放/暂停联动见上方「同刻四格截帧」区那两个按钮（四路 video 互相 link，任一路 play/pause/seek 都会带动其余三路）。</p>
+</section>
+<section id='concl'><h2>看片结论</h2><div class='callout'><ul>
+<li>四路同素材、同卡 u22、同分辨率与时长（1664x928 / 24fps / 10.13s），可逐帧对齐比较。</li>
+<li>「低清+高清」列是语义拆分：transition_step=6 表示总求值次数里前 6 次在低清分辨率上做，其余在高清段；精修卡的 419 在 sigma 尾部（低噪点区）额外加 1 步。</li>
+</ul></div></section>
+<p class='note'>重跑：<code>python3 var/reports/u22-snow-4way/build_4way.py</code> · 机器可读账本：<code>metrics.json</code></p>
+</main>
+<script>// 四路报告交互：同刻四格切换 + 四路视频同步。
+// 与 u22-refiner 报告的 report.js 同范式，但这里是 2x2 四格（不是左右两格）。
+(function () {
+  // ── 同刻四格切换 ──
+  document.querySelectorAll(".quadwrap").forEach(function (w) {
+    var img = w.querySelector("img");
+    var base = img.getAttribute("data-base") || "";
+    var btns = w.querySelectorAll(".qbar button[data-t]");
+    var cur = w.querySelector(".cur");
+    function mark(b) {
+      btns.forEach(function (o) { o.classList.remove("on"); });
+      b.classList.add("on");
+    }
+    btns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        img.src = base + btn.getAttribute("data-t") + ".jpg";
+        if (cur) cur.textContent = "t=" + btn.getAttribute("data-t") + "s";
+        mark(btn);
+      });
+    });
+    if (btns.length) mark(btns[0]);
+  });
+
+  // ── 四路视频同步 ──
+  var box = document.querySelector(".vgrid[data-quad]");
+  if (box) {
+    var vs = Array.prototype.slice.call(box.querySelectorAll("video"));
+    var syncing = false;
+    function link(s, d) {
+      s.addEventListener("play", function () {
+        if (syncing) return; syncing = true;
+        if (Math.abs(d.currentTime - s.currentTime) > 0.08) d.currentTime = s.currentTime;
+        d.play(); syncing = false;
+      });
+      s.addEventListener("pause", function () { if (!syncing) d.pause(); });
+      s.addEventListener("seeked", function () {
+        if (syncing) return; syncing = true; d.currentTime = s.currentTime; syncing = false;
+      });
+    }
+    vs.forEach(function (a) {
+      vs.forEach(function (b) { if (a !== b) link(a, b); });
+    });
+    var p = document.querySelector("[data-quadplay]");
+    var q = document.querySelector("[data-quadpause]");
+    if (p) p.addEventListener("click", function () {
+      vs.forEach(function (v) { v.currentTime = 0; v.play(); });
+    });
+    if (q) q.addEventListener("click", function () {
+      vs.forEach(function (v) { v.pause(); });
+    });
+  }
+})();
+</script></body></html>

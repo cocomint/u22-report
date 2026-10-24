@@ -1,0 +1,141 @@
+{
+ "generated_at": "2026-10-24 18:47:54",
+ "asset": "雪花",
+ "seed_source": "run.executed_prompt（DB runs.seed 对未显式下发 seed 的批次为 NULL）",
+ "timing_note": "server_seconds=pod 纯采样；wall_seconds=端到端（含排队+下载）",
+ "seed_cost_56_vs_57": {
+  "a_batch": 56,
+  "b_batch": 57,
+  "a_server": 559.4,
+  "b_server": 561.4,
+  "a_seed": 900198731025885,
+  "b_seed": 1591131034,
+  "diff_s": 2.0,
+  "pct": 0.36
+ },
+ "quad_images": [
+  "img/quad_t2.jpg",
+  "img/quad_t4.jpg",
+  "img/quad_t6.jpg",
+  "img/quad_t8.jpg"
+ ],
+ "groups": [
+  {
+   "batch": 53,
+   "name": "默认 6+4",
+   "semantics": "steps=10 · transition_step=6（模板默认）",
+   "run_id": "r_0f4ecce5d3d6724d",
+   "workflow": "u22",
+   "probe": {
+    "sampler_id": "397",
+    "scheduler_id": "261",
+    "seed": 900198731025885,
+    "steps": 10,
+    "transition_step": 6,
+    "scheduler": "beta",
+    "denoise": 1,
+    "lowres_scale": 0.6000000000000001,
+    "has_refiner": false,
+    "refiner": null,
+    "split": "6+4"
+   },
+   "server_seconds": 464.5,
+   "wall_seconds": 471.9,
+   "queue_seconds": 3.4,
+   "db_seed": null,
+   "seed_pinned": 0,
+   "pct_server_vs_base": 0.0,
+   "pct_wall_vs_base": 0.0,
+   "video": "comfyui_00002-audio.mp4"
+  },
+  {
+   "batch": 54,
+   "name": "精修卡 6+4+1",
+   "semantics": "u22-refiner · 419 在 sigma 尾部加 1 步",
+   "run_id": "r_5d1a5515f04a989d",
+   "workflow": "u22-refiner",
+   "probe": {
+    "sampler_id": "397",
+    "scheduler_id": "261",
+    "seed": 900198731025885,
+    "steps": 10,
+    "transition_step": 6,
+    "scheduler": "beta",
+    "denoise": 1,
+    "lowres_scale": 0.6000000000000001,
+    "has_refiner": true,
+    "refiner": {
+     "start_at_sigma": 0.7,
+     "end_at_sigma": 0,
+     "extra_steps": 1,
+     "spacing": "cosine"
+    },
+    "split": "6+5"
+   },
+   "server_seconds": 517.3,
+   "wall_seconds": 524.5,
+   "queue_seconds": 3.0,
+   "db_seed": null,
+   "seed_pinned": 0,
+   "pct_server_vs_base": 11.4,
+   "pct_wall_vs_base": 11.1,
+   "video": "comfyui_00004-audio.mp4"
+  },
+  {
+   "batch": 56,
+   "name": "6+6",
+   "semantics": "steps=12 · transition_step=6（高清段 4→6 步）",
+   "run_id": "r_a36cb38c5dfb827b",
+   "workflow": "u22",
+   "probe": {
+    "sampler_id": "397",
+    "scheduler_id": "261",
+    "seed": 900198731025885,
+    "steps": 12,
+    "transition_step": 6,
+    "scheduler": "beta",
+    "denoise": 1,
+    "lowres_scale": 0.6000000000000001,
+    "has_refiner": false,
+    "refiner": null,
+    "split": "6+6"
+   },
+   "server_seconds": 559.4,
+   "wall_seconds": 567.2,
+   "queue_seconds": 3.1,
+   "db_seed": null,
+   "seed_pinned": 0,
+   "pct_server_vs_base": 20.4,
+   "pct_wall_vs_base": 20.2,
+   "video": "comfyui_00005-audio.mp4"
+  },
+  {
+   "batch": 57,
+   "name": "6+6 随机seed",
+   "semantics": "同 #56 配置 · 只换 seed（隔离 seed 变量）",
+   "run_id": "r_c24c5844226b0bcd",
+   "workflow": "u22",
+   "probe": {
+    "sampler_id": "397",
+    "scheduler_id": "261",
+    "seed": 1591131034,
+    "steps": 12,
+    "transition_step": 6,
+    "scheduler": "beta",
+    "denoise": 1,
+    "lowres_scale": 0.6000000000000001,
+    "has_refiner": false,
+    "refiner": null,
+    "split": "6+6"
+   },
+   "server_seconds": 561.4,
+   "wall_seconds": 568.5,
+   "queue_seconds": 3.2,
+   "db_seed": 1591131034,
+   "seed_pinned": 1,
+   "pct_server_vs_base": 20.9,
+   "pct_wall_vs_base": 20.5,
+   "video": "comfyui_00006-audio.mp4"
+  }
+ ]
+}

@@ -1,0 +1,160 @@
+{
+ "generated_at": "2026-10-24 17:17:57",
+ "batches": {
+  "base": 53,
+  "refiner": 54
+ },
+ "workflows": {
+  "base": "u22",
+  "refiner": "u22-refiner"
+ },
+ "seed_source": "run.executed_prompt（DB runs.seed 为 NULL，本批未显式下发 seed）",
+ "assets": [
+  {
+   "asset": "浇花",
+   "slug": "jiaohua",
+   "seed_match": true,
+   "timing": {
+    "base_server": 491.4,
+    "refiner_server": 543.8,
+    "delta_server": 52.4,
+    "pct_server": 10.66,
+    "base_queue": 3.7,
+    "refiner_queue": 3.4,
+    "base_wall": 499.1,
+    "refiner_wall": 551.1
+   },
+   "model": {
+    "nfe_base": 10,
+    "nfe_refiner": 11,
+    "cost_base": 6.16,
+    "cost_refiner_A": 7.16,
+    "cost_refiner_B": 8.16,
+    "pred_A_pct": 16.23,
+    "pred_B_pct": 32.47
+   },
+   "psnr": {
+    "y": 28.199,
+    "u": 46.759,
+    "v": 44.825,
+    "average": 29.921,
+    "min": 26.722,
+    "max": 32.203
+   },
+   "base": {
+    "run_id": "r_7e1b0f03e78a26ef",
+    "probe": {
+     "node_count": 15,
+     "has_refiner": false,
+     "sampler_id": "397",
+     "scheduler_id": "261",
+     "sigmas_from": "261",
+     "seed": 900198731025885,
+     "steps": 10,
+     "scheduler": "beta",
+     "denoise": 1,
+     "transition_step": 6,
+     "lowres_scale": 0.6000000000000001,
+     "refiner": null
+    },
+    "high_freq": 2.418
+   },
+   "refiner": {
+    "run_id": "r_b0605120d27633e4",
+    "probe": {
+     "node_count": 16,
+     "has_refiner": true,
+     "sampler_id": "397",
+     "scheduler_id": "261",
+     "sigmas_from": "419",
+     "seed": 900198731025885,
+     "steps": 10,
+     "scheduler": "beta",
+     "denoise": 1,
+     "transition_step": 6,
+     "lowres_scale": 0.6000000000000001,
+     "refiner": {
+      "start_at_sigma": 0.7,
+      "end_at_sigma": 0,
+      "extra_steps": 1,
+      "spacing": "cosine"
+     }
+    },
+    "high_freq": 2.4769
+   }
+  },
+  {
+   "asset": "雪花",
+   "slug": "xuehua",
+   "seed_match": true,
+   "timing": {
+    "base_server": 464.5,
+    "refiner_server": 517.3,
+    "delta_server": 52.8,
+    "pct_server": 11.37,
+    "base_queue": 3.4,
+    "refiner_queue": 3.0,
+    "base_wall": 471.9,
+    "refiner_wall": 524.5
+   },
+   "model": {
+    "nfe_base": 10,
+    "nfe_refiner": 11,
+    "cost_base": 6.16,
+    "cost_refiner_A": 7.16,
+    "cost_refiner_B": 8.16,
+    "pred_A_pct": 16.23,
+    "pred_B_pct": 32.47
+   },
+   "psnr": {
+    "y": 27.685,
+    "u": 40.228,
+    "v": 40.583,
+    "average": 29.331,
+    "min": 26.967,
+    "max": 31.086
+   },
+   "base": {
+    "run_id": "r_0f4ecce5d3d6724d",
+    "probe": {
+     "node_count": 15,
+     "has_refiner": false,
+     "sampler_id": "397",
+     "scheduler_id": "261",
+     "sigmas_from": "261",
+     "seed": 900198731025885,
+     "steps": 10,
+     "scheduler": "beta",
+     "denoise": 1,
+     "transition_step": 6,
+     "lowres_scale": 0.6000000000000001,
+     "refiner": null
+    },
+    "high_freq": 2.641
+   },
+   "refiner": {
+    "run_id": "r_5d1a5515f04a989d",
+    "probe": {
+     "node_count": 16,
+     "has_refiner": true,
+     "sampler_id": "397",
+     "scheduler_id": "261",
+     "sigmas_from": "419",
+     "seed": 900198731025885,
+     "steps": 10,
+     "scheduler": "beta",
+     "denoise": 1,
+     "transition_step": 6,
+     "lowres_scale": 0.6000000000000001,
+     "refiner": {
+      "start_at_sigma": 0.7,
+      "end_at_sigma": 0,
+      "extra_steps": 1,
+      "spacing": "cosine"
+     }
+    },
+    "high_freq": 2.7901
+   }
+  }
+ ]
+}

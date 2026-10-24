@@ -1,0 +1,247 @@
+<!doctype html><html lang='zh'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>u22 精修 A/B 对比（极简版）</title>
+<style>:root{--bg:#0d1117;--card:#161b22;--card2:#1c2330;--line:#2d3644;--fg:#e6edf3;
+--dim:#8b949e;--acc:#58a6ff;--ok:#3fb950;--bad:#f85149;--warn:#d29922;--pur:#bc8cff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:14px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+header{padding:22px 34px;background:linear-gradient(180deg,#161b22,#0d1117);
+border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+header h1{margin:0 0 4px;font-size:20px}
+header .sub{color:var(--dim);font-size:12px}
+nav{margin-top:10px;display:flex;flex-wrap:wrap;gap:7px}
+nav a{font-size:12px;color:var(--dim);border:1px solid var(--line);padding:3px 10px;border-radius:20px}
+nav a:hover{color:var(--acc);border-color:var(--acc);text-decoration:none}
+main{padding:26px 34px 80px;max-width:1500px;margin:0 auto}
+section{margin-bottom:44px;scroll-margin-top:120px}
+h2{font-size:17px;margin:0 0 4px;padding-left:10px;border-left:3px solid var(--acc)}
+h2 .en{color:var(--dim);font-size:12px;font-weight:400;margin-left:8px}
+.lead{color:var(--dim);font-size:13px;margin:0 0 14px}
+table{border-collapse:collapse;width:100%;font-size:12.5px;margin:8px 0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--card2);color:var(--dim);font-weight:600;white-space:nowrap}
+tbody tr:nth-child(even){background:rgba(255,255,255,.02)}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.callout{border:1px solid var(--line);border-left:3px solid var(--acc);
+background:var(--card);padding:12px 16px;border-radius:6px;margin:12px 0}
+.callout.warn{border-left-color:var(--warn)}
+.callout.bad{border-left-color:var(--bad)}
+.callout.ok{border-left-color:var(--ok)}
+.callout h3{margin:0 0 6px;font-size:13.5px}
+.callout p{margin:5px 0;font-size:13px;color:#c9d1d9}
+.tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;
+border:1px solid var(--line);color:var(--dim);margin-right:5px}
+.tag.ok{color:var(--ok);border-color:var(--ok)}
+.tag.bad{color:var(--bad);border-color:var(--bad)}
+.tag.warn{color:var(--warn);border-color:var(--warn)}
+.tag.acc{color:var(--acc);border-color:var(--acc)}
+.up{color:var(--bad)}
+.down{color:var(--ok)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+figcaption{padding:6px 10px;font-size:11.5px;color:var(--dim);
+border-top:1px solid var(--line);background:var(--card2)}
+img.shot{width:100%;display:block}
+video{width:100%;display:block;background:#000}
+.ab{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.abhead{display:flex;justify-content:space-between;align-items:center;gap:10px;
+margin:18px 0 8px;flex-wrap:wrap}
+.abhead h3{margin:0;font-size:15px}
+.btn{font-size:11.5px;color:var(--dim);border:1px solid var(--line);background:var(--card2);
+padding:3px 10px;border-radius:5px;cursor:pointer}
+.btn:hover{color:var(--acc);border-color:var(--acc)}
+.verdict{display:flex;gap:6px;flex-wrap:wrap}
+.verdict button{font-size:11.5px;padding:3px 10px;border-radius:5px;cursor:pointer;
+border:1px solid var(--line);background:var(--card2);color:var(--dim)}
+.verdict button[data-v=a].on{background:#1f3a5f;border-color:var(--acc);color:var(--acc)}
+.verdict button[data-v=b].on{background:#1a3d24;border-color:var(--ok);color:var(--ok)}
+.verdict button[data-v=same].on{background:#3d3419;border-color:var(--warn);color:var(--warn)}
+.sbswrap{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.sbswrap img{width:100%;display:block}
+.sbsbar{display:flex;gap:6px;padding:7px 10px;background:var(--card2);
+border-top:1px solid var(--line);flex-wrap:wrap;align-items:center}
+.kpi{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
+.kpi div{flex:1;min-width:150px;background:var(--card);border:1px solid var(--line);
+border-radius:6px;padding:10px 14px}
+.kpi b{display:block;font-size:21px;font-variant-numeric:tabular-nums}
+.kpi span{font-size:11px;color:var(--dim)}
+.note{font-size:11.5px;color:var(--dim)}
+</style></head><body>
+<header><h1>u22 精修 A/B 对比 <span class='note'>同素材 · 同 seed</span></h1>
+<div class='sub'>基线 <code>u22</code> vs 精修 <code>u22-refiner</code> · 生成于 2026-10-24 17:17:57</div>
+<nav><a href='#timing'>耗时对比</a>
+<a href='#asset-jiaohua'>浇花</a>
+<a href='#asset-xuehua'>雪花</a>
+</nav></header><main>
+<section id='timing'><h2>耗时对比 <span class='en'>Timing</span></h2>
+<table><thead><tr><th>素材</th><th>基线 采样</th><th>精修 采样</th><th>采样增幅</th><th>基线 端到端</th><th>精修 端到端</th><th>端到端增幅</th></tr></thead><tbody>
+<tr><td>浇花</td><td class='num'>491.4s</td><td class='num'>543.8s</td><td class='num'><b><span class='up'>+10.7%</span></b></td><td class='num'>499.1s</td><td class='num'>551.1s</td><td class='num'><span class='up'>+10.4%</span></td></tr>
+<tr><td>雪花</td><td class='num'>464.5s</td><td class='num'>517.3s</td><td class='num'><b><span class='up'>+11.4%</span></b></td><td class='num'>471.9s</td><td class='num'>524.5s</td><td class='num'><span class='up'>+11.1%</span></td></tr>
+</tbody></table>
+<p class='note'>采样 = server_seconds（pod 纯采样）；端到端 = wall_seconds（含排队约 3s + 下载约 4s）。精修 = 多 1 步采样（10 → 11 NFE）。</p>
+</section>
+<section id='asset-jiaohua'><h2>浇花 <span class='en'>左基线 / 右精修</span></h2>
+<div class='abhead'><h3>同刻并排帧</h3></div>
+<div class='sbswrap'><img class='shot' src='img/jiaohua_sbs_t2.jpg' data-base='img/jiaohua_sbs_t' loading='lazy'><div class='sbsbar'>
+<button class='btn' data-t='2'>t=2s</button>
+<button class='btn' data-t='4'>t=4s</button>
+<button class='btn' data-t='6'>t=6s</button>
+<button class='btn' data-t='8'>t=8s</button>
+<span class='cur'>t=2s</span></div></div>
+<div class='abhead'><h3>全程 12 帧拼图（1fps）</h3></div><div class='ab'>
+<figure><img class='shot' src='img/jiaohua_base_grid.jpg' loading='lazy'><figcaption>基线</figcaption></figure>
+<figure><img class='shot' src='img/jiaohua_refiner_grid.jpg' loading='lazy'><figcaption>精修</figcaption></figure>
+</div>
+<div class='abhead'><h3>视频（左右同步）</h3><button class='btn' data-sync='jiaohua'>同时播放</button><button class='btn' data-pause='jiaohua'>同时暂停</button></div>
+<div class='ab' data-pair='jiaohua'>
+<figure><video controls preload='metadata' src='media/jiaohua_base.mp4'></video><figcaption><b>基线</b> <code>u22</code> · run r_7e1b0f03e78a26ef</figcaption></figure>
+<figure><video controls preload='metadata' src='media/jiaohua_refiner.mp4'></video><figcaption><b>精修</b> <code>u22-refiner</code> · run r_b0605120d27633e4</figcaption></figure>
+</div>
+<div class='callout'><h3>画面对比情况</h3><ul>
+<li>构图、人物动作、机位逐帧一致（同 seed），无漂移。</li>
+<li>差异很细微：水柱/水雾形状逐帧略有不同；精修侧叶片与栏杆边缘稍干净，基线侧阳台暗部地面、玻璃反光处有轻微颗粒。</li>
+<li>无糊化、重影、色偏等副作用。</li>
+</ul></div>
+</section>
+<section id='asset-xuehua'><h2>雪花 <span class='en'>左基线 / 右精修</span></h2>
+<div class='abhead'><h3>同刻并排帧</h3></div>
+<div class='sbswrap'><img class='shot' src='img/xuehua_sbs_t2.jpg' data-base='img/xuehua_sbs_t' loading='lazy'><div class='sbsbar'>
+<button class='btn' data-t='2'>t=2s</button>
+<button class='btn' data-t='4'>t=4s</button>
+<button class='btn' data-t='6'>t=6s</button>
+<button class='btn' data-t='8'>t=8s</button>
+<span class='cur'>t=2s</span></div></div>
+<div class='abhead'><h3>全程 12 帧拼图（1fps）</h3></div><div class='ab'>
+<figure><img class='shot' src='img/xuehua_base_grid.jpg' loading='lazy'><figcaption>基线</figcaption></figure>
+<figure><img class='shot' src='img/xuehua_refiner_grid.jpg' loading='lazy'><figcaption>精修</figcaption></figure>
+</div>
+<div class='abhead'><h3>视频（左右同步）</h3><button class='btn' data-sync='xuehua'>同时播放</button><button class='btn' data-pause='xuehua'>同时暂停</button></div>
+<div class='ab' data-pair='xuehua'>
+<figure><video controls preload='metadata' src='media/xuehua_base.mp4'></video><figcaption><b>基线</b> <code>u22</code> · run r_0f4ecce5d3d6724d</figcaption></figure>
+<figure><video controls preload='metadata' src='media/xuehua_refiner.mp4'></video><figcaption><b>精修</b> <code>u22-refiner</code> · run r_5d1a5515f04a989d</figcaption></figure>
+</div>
+<div class='callout'><h3>画面对比情况</h3><ul>
+<li>姿态与构图逐帧一致；差异集中在近景（t=6s / 8s）。</li>
+<li>近景里精修侧脸部与深色棉衣明显更干净、颗粒更少；基线侧脸部与暗部噪点颗粒更明显。</li>
+<li>蒸汽、落雪形状两组逐帧不同 —— 这是多 1 步采样带来的轨迹分叉，不是精修功能；看颗粒请盯静态边缘与脸部，别盯这些动态元素。</li>
+</ul></div>
+</section>
+<p class='note'>seed 真源为 executed_prompt（DB runs.seed 为 NULL，本批未显式下发）；两组 seed 逐对相等。重跑：<code>python3 var/reports/u22-refiner/build_ab_report.py</code></p>
+</main>
+<script>// A/B 报告交互：左右视频同步播放 + 同刻帧切换 + 人工打标。
+// 打标只存 localStorage，不写 DB —— 本报告的选项是 A/B/same，与 m1 报告的
+// good/bad 二分语义不同，写同一字段会污染那批统计。需归档时点「导出 JSON」。
+(function () {
+  var KEY = "u22refiner_ab_v1";
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { return {}; }
+  }
+  function save(d) {
+    try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
+  }
+  var data = load();
+
+  // ── 左右视频同步 ──
+  document.querySelectorAll(".ab[data-pair]").forEach(function (box) {
+    var vs = box.querySelectorAll("video");
+    if (vs.length !== 2) return;
+    var a = vs[0], b = vs[1], syncing = false;
+    function link(src, dst) {
+      src.addEventListener("play", function () {
+        if (syncing) return; syncing = true;
+        if (Math.abs(dst.currentTime - src.currentTime) > 0.08) dst.currentTime = src.currentTime;
+        dst.play(); syncing = false;
+      });
+      src.addEventListener("pause", function () { if (!syncing) dst.pause(); });
+      src.addEventListener("seeked", function () {
+        if (syncing) return; syncing = true; dst.currentTime = src.currentTime; syncing = false;
+      });
+    }
+    link(a, b); link(b, a);
+
+    var slug = box.getAttribute("data-pair");
+    var play = document.querySelector("button[data-sync='" + slug + "']");
+    var pause = document.querySelector("button[data-pause='" + slug + "']");
+    if (play) play.addEventListener("click", function () {
+      a.currentTime = 0; b.currentTime = 0; a.play(); b.play();
+    });
+    if (pause) pause.addEventListener("click", function () { a.pause(); b.pause(); });
+  });
+
+  // ── 同刻并排帧切换 ──
+  document.querySelectorAll(".sbswrap").forEach(function (w) {
+    var img = w.querySelector("img");
+    var base = img.getAttribute("data-base") || "";
+    var btns = w.querySelectorAll(".sbsbar button[data-t]");
+    var cur = w.querySelector(".sbsbar .cur");
+    function mark(btn) {
+      btns.forEach(function (o) { o.style.color = ""; o.style.borderColor = ""; });
+      btn.style.color = "var(--acc)"; btn.style.borderColor = "var(--acc)";
+    }
+    btns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var t = btn.getAttribute("data-t");
+        img.src = base + t + ".jpg";
+        if (cur) cur.textContent = "t=" + t + "s";
+        mark(btn);
+      });
+    });
+    if (btns.length) mark(btns[0]);
+  });
+
+  // ── 人工打标 ──
+  function paint() {
+    document.querySelectorAll(".verdict").forEach(function (v) {
+      var key = v.getAttribute("data-key");
+      var cur = data[key] && data[key].verdict;
+      v.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("on", btn.getAttribute("data-v") === cur);
+      });
+      var ta = document.querySelector("textarea[data-ta='" + key + "']");
+      if (ta && data[key] && ta.value !== (data[key].note || "")) ta.value = data[key].note || "";
+    });
+    var n = Object.keys(data).filter(function (k) { return data[k].verdict; }).length;
+    document.querySelectorAll(".donecount").forEach(function (e) { e.textContent = n; });
+  }
+
+  document.querySelectorAll(".verdict").forEach(function (v) {
+    var key = v.getAttribute("data-key");
+    v.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        data[key] = data[key] || {};
+        data[key].verdict = btn.getAttribute("data-v");
+        data[key].ts = Date.now();
+        save(data); paint();
+      });
+    });
+  });
+
+  document.querySelectorAll("textarea[data-ta]").forEach(function (ta) {
+    ta.addEventListener("input", function () {
+      var key = ta.getAttribute("data-ta");
+      data[key] = data[key] || {};
+      data[key].note = ta.value;
+      data[key].ts = Date.now();
+      save(data);
+    });
+  });
+
+  var exp = document.getElementById("exportBtn");
+  if (exp) exp.addEventListener("click", function () {
+    var blob = new Blob(
+      [JSON.stringify({ exported_at: Date.now(), marks: data }, null, 1)],
+      { type: "application/json" });
+    var u = URL.createObjectURL(blob);
+    var a2 = document.createElement("a");
+    a2.href = u; a2.download = "u22-refiner-ab-marks.json"; a2.click();
+    URL.revokeObjectURL(u);
+  });
+
+  paint();
+})();
+</script></body></html>
