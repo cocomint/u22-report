@@ -1,0 +1,99 @@
+{
+ "generated_at": "2026-10-24 19:53",
+ "asset": "雪花",
+ "topic": "风雪描述在三版 prompt 的差异及对画面的影响",
+ "controlled": "同素材/同卡/同配置(默认6+4)/同seed(900198731025885 未下发·回退模板)",
+ "seed_source": "run.executed_prompt",
+ "tri_images": [
+  "img/tri_t2.jpg",
+  "img/tri_t4.jpg",
+  "img/tri_t6.jpg",
+  "img/tri_t8.jpg"
+ ],
+ "groups": [
+  {
+   "name": "原版",
+   "file_label": "prompt.txt.bak（旧版全文）",
+   "batch": 53,
+   "run_id": "r_0f4ecce5d3d6724d",
+   "probe": {
+    "sampler_id": "397",
+    "scheduler_id": "261",
+    "seed": 900198731025885,
+    "steps": 10,
+    "transition_step": 6,
+    "scheduler": "beta",
+    "denoise": 1,
+    "lowres_scale": 0.6000000000000001,
+    "has_refiner": false,
+    "refiner": null,
+    "split": "6+4"
+   },
+   "prompt_len": 6124,
+   "prompt_md5": "f1ed33797ba14e9118690a2c4f44dd77",
+   "server": 464.5,
+   "wall": 471.9,
+   "queue": 3.4,
+   "seed_pinned": 0,
+   "high_freq": 2.641,
+   "pct_server": 0.0,
+   "snow_line_count": 14
+  },
+  {
+   "name": "新 qwen",
+   "file_label": "prompt.txt",
+   "batch": 58,
+   "run_id": "r_8c9df84ea4ba9b90",
+   "probe": {
+    "sampler_id": "397",
+    "scheduler_id": "261",
+    "seed": 900198731025885,
+    "steps": 10,
+    "transition_step": 6,
+    "scheduler": "beta",
+    "denoise": 1,
+    "lowres_scale": 0.6000000000000001,
+    "has_refiner": false,
+    "refiner": null,
+    "split": "6+4"
+   },
+   "prompt_len": 3997,
+   "prompt_md5": "245e41342838ee8c682279af3b6f0225",
+   "server": 445.3,
+   "wall": 451.3,
+   "queue": 3.0,
+   "seed_pinned": 0,
+   "high_freq": 2.9209,
+   "pct_server": -4.1,
+   "snow_line_count": 9
+  },
+  {
+   "name": "新 deepseek",
+   "file_label": "prompt_ds.txt",
+   "batch": 58,
+   "run_id": "r_fcc16a05cc00f0c7",
+   "probe": {
+    "sampler_id": "397",
+    "scheduler_id": "261",
+    "seed": 900198731025885,
+    "steps": 10,
+    "transition_step": 6,
+    "scheduler": "beta",
+    "denoise": 1,
+    "lowres_scale": 0.6000000000000001,
+    "has_refiner": false,
+    "refiner": null,
+    "split": "6+4"
+   },
+   "prompt_len": 5590,
+   "prompt_md5": "8a4fa10bd3515ffd170fd10feb11d346",
+   "server": 447.5,
+   "wall": 454.1,
+   "queue": 2.9,
+   "seed_pinned": 0,
+   "high_freq": 2.6004,
+   "pct_server": -3.7,
+   "snow_line_count": 11
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>u22 合并对照：精修加成 × 二采 6 步</title>
+<link rel="stylesheet" href="style.css"></head><body>
+<header><h1>u22 合并对照 — 精修是否有加成 × 二采 6 步对比效果</h1>
+<div class="sub">生成 2026-10-24 19:59 ｜ Part A 复用 u22-refiner 产物，
+Part B 复用 u22-snow-4way 产物，均不重抽帧 ｜ 真源：节点值取 run.executed_prompt，
+耗时取 DB runs ｜ 交叉断言已验：refiner 雪花两路 = 4way #53/#54 同一批 run</div>
+<nav><a href="../prompt3/">← 三路 prompt 对照（风雪）</a>
+<a href="../snow-4way/">雪花四路对照</a>
+<a href="../refiner-ab/">精修卡 A/B</a></nav></header>
+<main>
+<section><h2>Part A · 精修是否有加成（同 prompt 同 seed，仅精修节点有无）</h2>
+
+<h3>雪花：默认卡 <span class="note">#d6724d</span>
+ vs 精修卡 <span class="note">#4a989d</span>
+ <span class="note">seed 同值 = True</span></h3>
+<table><tr><th>指标</th><th class="num">默认卡 base</th><th class="num">精修卡 refiner</th><th>差</th></tr>
+<tr><td>PSNR（refiner vs base，dB）</td><td class="num">—</td><td class="num">29.331</td><td>均值；区间 26.97 ~ 31.09（Y 27.68）</td></tr>
+<tr><td>高频能量（首帧拉普拉斯归一）</td><td class="num">2.6410</td><td class="num">2.7901</td><td class="up">+0.1491（更锐/颗粒多）</td></tr>
+<tr><td>采样求值次数 NFE</td><td class="num">10</td><td class="num">11</td><td>+1（sigma 尾部追加 extra_steps=1）</td></tr>
+<tr><td>采样耗时 server(s)</td><td class="num">464.5</td><td class="num">517.3</td><td>+11.4%（预测 +16.23%）</td></tr>
+<tr><td>配置（steps / transition / seed尾6）</td><td class="num">10 / 6 / 025885</td><td class="num">10 / 6 / 025885</td><td>仅精修节点有无之差</td></tr>
+</table>
+<div class='quadwrap'><img class='shot' data-base='img/sbs_t' src='img/sbs_t2.jpg' alt='同刻并排'><div class='qbar'><button data-t='2'>t=2s</button><button data-t='4'>t=4s</button><button data-t='6'>t=6s</button><button data-t='8'>t=8s</button><span class='cur'>t=2s</span></div><div class='legend'><div>左 = 默认卡 base</div><div>右 = 精修卡 refiner</div></div></div>
+<div class="grids">
+<figure><img class="shot" src="img/xuehua_base_grid.jpg" alt="base 全程"><figcaption>雪花 默认卡 · 全程 12 帧</figcaption></figure>
+<figure><img class="shot" src="img/xuehua_refiner_grid.jpg" alt="refiner 全程"><figcaption>雪花 精修卡 · 全程 12 帧</figcaption></figure>
+</div>
+<div class="vgrid" data-quad>
+<figure><video controls preload="metadata" src="media/xuehua_base.mp4"></video><figcaption>雪花 默认卡</figcaption></figure>
+<figure><video controls preload="metadata" src="media/xuehua_refiner.mp4"></video><figcaption>雪花 精修卡</figcaption></figure>
+</div>
+<h3>浇花：默认卡 <span class="note">#8a26ef</span>
+ vs 精修卡 <span class="note">#7633e4</span>
+ <span class="note">seed 同值 = True</span></h3>
+<table><tr><th>指标</th><th class="num">默认卡 base</th><th class="num">精修卡 refiner</th><th>差</th></tr>
+<tr><td>PSNR（refiner vs base，dB）</td><td class="num">—</td><td class="num">29.921</td><td>均值；区间 26.72 ~ 32.20（Y 28.20）</td></tr>
+<tr><td>高频能量（首帧拉普拉斯归一）</td><td class="num">2.4180</td><td class="num">2.4769</td><td class="up">+0.0589（更锐/颗粒多）</td></tr>
+<tr><td>采样求值次数 NFE</td><td class="num">10</td><td class="num">11</td><td>+1（sigma 尾部追加 extra_steps=1）</td></tr>
+<tr><td>采样耗时 server(s)</td><td class="num">491.4</td><td class="num">543.8</td><td>+10.7%（预测 +16.23%）</td></tr>
+<tr><td>配置（steps / transition / seed尾6）</td><td class="num">10 / 6 / 025885</td><td class="num">10 / 6 / 025885</td><td>仅精修节点有无之差</td></tr>
+</table>
+<div class='quadwrap'><img class='shot' data-base='img/jiaohua_sbs_t' src='img/jiaohua_sbs_t2.jpg' alt='同刻并排'><div class='qbar'><button data-t='2'>t=2s</button><button data-t='4'>t=4s</button><button data-t='6'>t=6s</button><button data-t='8'>t=8s</button><span class='cur'>t=2s</span></div><div class='legend'><div>左 = 默认卡 base</div><div>右 = 精修卡 refiner</div></div></div>
+<div class="grids">
+<figure><img class="shot" src="img/jiaohua_base_grid.jpg" alt="base 全程"><figcaption>浇花 默认卡 · 全程 12 帧</figcaption></figure>
+<figure><img class="shot" src="img/jiaohua_refiner_grid.jpg" alt="refiner 全程"><figcaption>浇花 精修卡 · 全程 12 帧</figcaption></figure>
+</div>
+<div class="vgrid" data-quad>
+<figure><video controls preload="metadata" src="media/jiaohua_base.mp4"></video><figcaption>浇花 默认卡</figcaption></figure>
+<figure><video controls preload="metadata" src="media/jiaohua_refiner.mp4"></video><figcaption>浇花 精修卡</figcaption></figure>
+</div>
+<div class="callout"><h3>看片要点</h3><ul><li>雪花：精修路（#54）与 base（#53）同 prompt 同 seed，PSNR 均值为量化主据；高频能量 base→refiner 的变化方向决定「更干净还是更锐」。</li><li>浇花：第二素材用于验证加成是否跨素材稳定，而非雪花个例。</li><li>NFE：refiner 在 sigma 尾部追加 extra_steps，采样求值次数增加是加成的成本面。</li><li>看片：盯静态边缘与暗部颗粒（精修作用区），蒸汽/运动元素两路本就分叉不作据。</li></ul></div>
+</section>
+<section><h2>Part B · 二采 6 步对比效果（雪花四路）</h2>
+<table><tr><th>路</th><th class="num">steps</th><th class="num">transition_step</th>
+<th class="num">seed 尾6</th><th class="num">server(s)</th><th class="num">vs #53</th>
+<th>seed 来源</th></tr><tr class='hi'><td><b>默认 6+4</b><div class='note'>#53</div></td><td class='num'>10</td><td class='num'>6</td><td class='num'>025885</td><td class='num'>464.5</td><td class='num'>基准</td><td>未下发·回退模板</td></tr><tr><td><b>精修卡 6+4+1</b><div class='note'>#54</div></td><td class='num'>10</td><td class='num'>6</td><td class='num'>025885</td><td class='num'>517.3</td><td class='num'>+11.4%</td><td>未下发·回退模板</td></tr><tr><td><b>6+6</b><div class='note'>#56</div></td><td class='num'>12</td><td class='num'>6</td><td class='num'>025885</td><td class='num'>559.4</td><td class='num'>+20.4%</td><td>未下发·回退模板</td></tr><tr><td><b>6+6 随机seed</b><div class='note'>#57</div></td><td class='num'>12</td><td class='num'>6</td><td class='num'>131034</td><td class='num'>561.4</td><td class='num'>+20.9%</td><td>显式下发</td></tr></table>
+<p class="note">seed 无关性（#56 vs #57 仅 seed 不同）：采样 559.4s
+ vs 561.4s = 差 2.0s（0.36%）
+ → 6+6 的开销与画质增益与 seed 无关。</p>
+<div class='quadwrap'><img class='shot' data-base='img/quad_t' src='img/quad_t2.jpg' alt='同刻并排'><div class='qbar'><button data-t='2'>t=2s</button><button data-t='4'>t=4s</button><button data-t='6'>t=6s</button><button data-t='8'>t=8s</button><span class='cur'>t=2s</span></div><div class='legend' style='grid-template-columns:1fr 1fr'><div>左上 #53 默认 6+4</div><div>右上 #54 精修卡</div><div>左下 #56 6+6</div><div>右下 #57 6+6 随机seed</div></div></div>
+<button class="btn" data-allplay>▶ 全部播放</button>
+<button class="btn" data-allpause>⏸ 全部暂停</button>
+<div class="vgrid" data-quad><figure><video controls preload='metadata' src='media/w4_53.mp4'></video><figcaption>默认 6+4 · #53</figcaption></figure><figure><video controls preload='metadata' src='media/w4_54.mp4'></video><figcaption>精修卡 6+4+1 · #54</figcaption></figure><figure><video controls preload='metadata' src='media/w4_56.mp4'></video><figcaption>6+6 · #56</figcaption></figure><figure><video controls preload='metadata' src='media/w4_57.mp4'></video><figcaption>6+6 随机seed · #57</figcaption></figure></div>
+<div class="callout"><h3>看片要点</h3><ul><li>#56/#57 = transition_step 6→6（steps 10→12，低清6+高清6），对比 #53 默认 6+4。</li><li>seed 无关性：#56 vs #57 仅 seed 不同，采样耗时差在 1% 内 → 6+6 的开销与画质增益都不是 seed 运气。</li><li>看片：高清段多 2 步主要改善近景人脸与暗部颗粒，用 quad 同刻 2x2 横向比。</li></ul></div>
+</section>
+</main><script src="report.js"></script></body></html>
