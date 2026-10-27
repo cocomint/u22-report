@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>u22 8+2 vs 8+4 · case 171-176 · 三素材对比</title>
+<style>
+:root{--bg:#0f1117;--cd:#171a23;--ln:#262b38;--tx:#e7eaf0;--mu:#98a2b6;--ac:#5aa9ff;--ok:#4fd18b;--wn:#ffb257}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.65 -apple-system,"PingFang SC",sans-serif}
+main{max-width:1200px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:21px;margin:0 0 4px}h2{font-size:17px;margin:34px 0 8px;padding-left:9px;border-left:3px solid var(--ac)}
+.sub{color:var(--mu);font-size:12.5px}
+.rec{border:1px solid #2e6b4c;border-radius:12px;padding:14px 18px;margin:14px 0;background:linear-gradient(180deg,#12241b,#141821)}
+.rec h3{margin:0 0 8px;font-size:16px;color:var(--ok)}
+.rec ul{margin:0;padding-left:20px}.rec li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:12.5px;margin:8px 0}
+th,td{border-bottom:1px solid var(--ln);padding:6px 8px;text-align:left}th{color:var(--mu);background:#12151d}
+.mo{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--mu)}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0}
+.vcell{border:1px solid var(--ln);border-radius:9px;padding:10px;background:#13161f}
+.vcell h4{margin:0 0 6px;font-size:13px}.vcell .kv{font-size:11.5px;color:var(--mu);margin-bottom:6px}
+video{width:100%;background:#000;border-radius:7px;display:block;max-height:60vh}
+.tag{display:inline-block;padding:1px 9px;border-radius:99px;font-size:11.5px;border:1px solid var(--ln);background:#1f2431;margin-right:6px}
+.tag.a{color:var(--ac);border-color:var(--ac)}.tag.b{color:var(--wn);border-color:var(--wn)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
+.pair{border:1px solid var(--ln);border-radius:9px;overflow:hidden;background:#13161f}
+.pair .ph{display:flex;justify-content:space-between;padding:5px 8px;font-size:11.5px;color:var(--mu);background:#12151d}
+.pair .ph b{color:var(--tx)}
+.pair .imgs{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.pair img{width:100%;display:block;cursor:zoom-in}
+.cap{padding:4px 8px 6px;font-size:11px;color:var(--mu)}
+.lb{position:relative}.lb::after{content:attr(data-t);position:absolute;left:4px;top:4px;background:rgba(0,0,0,.55);color:#fff;font-size:10px;padding:1px 6px;border-radius:4px}
+#zoom{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9;cursor:zoom-out}
+#zoom img{max-width:92vw;max-height:92vh}
+@media(max-width:860px){.vgrid,.pgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<h1>u22 一采8步 vs 8+2 / 8+4 精修对比</h1>
+<div class="sub">case 171–176 · 三个素材 × 两档（steps 10 = 8+2，steps 12 = 8+4）· 9:16 / 0.9MP / 15s · 2026-10-27 跑批 #74/#75/#76</div>
+
+<div class="rec">
+<h3>结论</h3>
+<ul>
+<li><b>时长</b>：8+4 比 8+2 服务端耗时平均 <b>+25%</b>（老婆 +25.0% / 虾皮 +25.0% / 红眼 +24.9%）。</li>
+</ul>
+</div>
+
+<h2>耗时（服务端，秒）</h2>
+<table>
+<tr><th>素材</th><th>8+2（steps 10）</th><th>8+4（steps 12）</th><th>增幅</th></tr>
+<tr><td>老婆你听我解释</td><td>397.4（case 171）</td><td>496.7（case 172）</td><td>+25.0%</td></tr>
+<tr><td>虾皮广告</td><td>348.7（case 173）</td><td>436.0（case 174）</td><td>+25.0%</td></tr>
+<tr><td>情感红眼睛和流眼泪</td><td>379.3（case 175）</td><td>473.6（case 176）</td><td>+24.9%</td></tr>
+</table>
+<div class="sub">口径：runs.server_seconds（纯生成，不含排队/下载）。视频输出时长两档均为 15.08s，无差异。</div>
+
+<h2>素材一：老婆你听我解释</h2>
+<div class="vgrid">
+<div class="vcell"><h4><span class="tag a">8+2</span>case 171 · 397.4s</h4><video src="file:///Users/yuchenhuang/Ai/foundry1/var/out/media/r_52dd812b1bfe2bee/comfyui_00036-audio.mp4" controls playsinline preload="metadata"></video><div class="kv mo">r_52dd812b1bfe2bee</div></div>
+<div class="vcell"><h4><span class="tag b">8+4</span>case 172 · 496.7s</h4><video src="file:///Users/yuchenhuang/Ai/foundry1/var/out/media/r_37753668480e6e24/comfyui_00037-audio.mp4" controls playsinline preload="metadata"></video><div class="kv mo">r_37753668480e6e24</div></div>
+</div>
+<div class="pgrid">
+<div class="pair"><div class="ph"><b>2.5s</b><span>左 8+2 / 右 8+4</span></div><div class="imgs"><div class="lb" data-t="8+2"><img src="171_laopo_82_2.jpg" loading="lazy"></div><div class="lb" data-t="8+4"><img src="172_laopo_84_2.jpg" loading="lazy"></div></div></div>
+<div class="pair"><div class="ph"><b>5.0s</b><span>左 8+2 / 右 8+4</span></div><div class="imgs"><div class="lb" data-t="8+2"><img src="171_laopo_82_3.jpg" loading="lazy"></div><div class="lb" data-t="8+4"><img src="172_laopo_84_3.jpg" loading="lazy"></div></div></div>
+<div class="pair"><div class="ph"><b>10.0s</b><span>左 8+2 / 右 8+4</span></div><div class="imgs"><div class="lb" data-t="8+2"><img src="171_laopo_82_5.jpg" loading="lazy"></div><div class="lb" data-t="8+4"><img src="172_laopo_84_5.jpg" loading="lazy"></div></div></div>
+</div>
+
+<h2>素材二：虾皮广告</h2>
+<div class="vgrid">
+<div class="vcell"><h4><span class="tag a">8+2</span>case 173 · 348.7s</h4><video src="file:///Users/yuchenhuang/Ai/foundry1/var/out/media/r_1af85a2e4dec1744/comfyui_00038-audio.mp4" controls playsinline preload="metadata"></video><div class="kv mo">r_1af85a2e4dec1744</div></div>
+<div class="vcell"><h4><span class="tag b">8+4</span>case 174 · 436.0s</h4><video src="file:///Users/yuchenhuang/Ai/foundry1/var/out/media/r_7e5d49011a02fdac/comfyui_00039-audio.mp4" controls playsinline preload="metadata"></video><div class="kv mo">r_7e5d49011a02fdac</div></div>
+</div>
+<div class="pgrid">
+<div class="pair"><div class="ph"><b>2.5s</b><span>左 8+2 / 右 8+4</span></div><div class="imgs"><div class="lb" data-t="8+2"><img src="173_xiapi_82_2.jpg" loading="lazy"></div><div class="lb" data-t="8+4"><img src="174_xiapi_84_2.jpg" loading="lazy"></div></div></div>
+<div class="pair"><div class="ph"><b>7.5s</b><span>左 8+2 / 右 8+4</span></div><div class="imgs"><div class="lb" data-t="8+2"><img src="173_xiapi_82_4.jpg" loading="lazy"></div><div class="lb" data-t="8+4"><img src="174_xiapi_84_4.jpg" loading="lazy"></div></div></div>
+<div class="pair"><div class="ph"><b>12.5s</b><span>左 8+2 / 右 8+4</span></div><div class="imgs"><div class="lb" data-t="8+2"><img src="173_xiapi_82_6.jpg" loading="lazy"></div><div class="lb" data-t="8+4"><img src="174_xiapi_84_6.jpg" loading="lazy"></div></div></div>
+</div>
+
+<h2>素材三：情感红眼睛和流眼泪</h2>
+<div class="vgrid">
+<div class="vcell"><h4><span class="tag a">8+2</span>case 175 · 379.3s</h4><video src="file:///Users/yuchenhuang/Ai/foundry1/var/out/media/r_0827752fc5b7a1e9/comfyui_00040-audio.mp4" controls playsinline preload="metadata"></video><div class="kv mo">r_0827752fc5b7a1e9</div></div>
+<div class="vcell"><h4><span class="tag b">8+4</span>case 176 · 473.6s</h4><video src="file:///Users/yuchenhuang/Ai/foundry1/var/out/media/r_a31750dd9ef1b12c/comfyui_00041-audio.mp4" controls playsinline preload="metadata"></video><div class="kv mo">r_a31750dd9ef1b12c</div></div>
+</div>
+<div class="pgrid">
+<div class="pair"><div class="ph"><b>2.5s</b><span>左 8+2 / 右 8+4</span></div><div class="imgs"><div class="lb" data-t="8+2"><img src="175_eye_82_2.jpg" loading="lazy"></div><div class="lb" data-t="8+4"><img src="176_eye_84_2.jpg" loading="lazy"></div></div></div>
+<div class="pair"><div class="ph"><b>7.5s</b><span>左 8+2 / 右 8+4</span></div><div class="imgs"><div class="lb" data-t="8+2"><img src="175_eye_82_4.jpg" loading="lazy"></div><div class="lb" data-t="8+4"><img src="176_eye_84_4.jpg" loading="lazy"></div></div></div>
+<div class="pair"><div class="ph"><b>12.5s</b><span>左 8+2 / 右 8+4</span></div><div class="imgs"><div class="lb" data-t="8+2"><img src="175_eye_82_6.jpg" loading="lazy"></div><div class="lb" data-t="8+4"><img src="176_eye_84_6.jpg" loading="lazy"></div></div></div>
+</div>
+
+<div class="sub" style="margin-top:26px">帧取自 24fps 视频的第 60/120/180/240/300 帧（2.5/5/7.5/10/12.5s），同刻并排。图片在 <span class="mo">var/reports/u22/m82v84/</span>。点击图片放大。</div>
+</main>
+<div id="zoom"><img></div>
+<script>
+const z=document.getElementById('zoom'),zi=z.querySelector('img');
+document.querySelectorAll('.pair img').forEach(im=>im.onclick=()=>{zi.src=im.src;z.style.display='flex'});
+z.onclick=()=>z.style.display='none';
+</script>
+</body>
+</html>
